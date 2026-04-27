@@ -1,0 +1,71 @@
+:root {
+  --orange: #F65318;
+  --orange-dim: rgba(246, 83, 24, 0.15);
+  --orange-glow: rgba(246, 83, 24, 0.3);
+  --anthracite: #2A2A2A;
+  --bg-dark: #141414;
+  --bg-panel: #1C1C1C;
+  --bg-card: #222222;
+  --bg-card-hover: #282828;
+  --border: rgba(255,255,255,0.06);
+  --border-active: rgba(246, 83, 24, 0.4);
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255,255,255,0.55);
+  --text-muted: rgba(255,255,255,0.28);
+  --green: #2ECC8A;
+  --green-dim: rgba(46, 204, 138, 0.15);
+  --yellow: #F5C842;
+  --yellow-dim: rgba(245, 200, 66, 0.15);
+  --red: #EE4444;
+  --red-dim: rgba(238, 68, 68, 0.15);
+  --blue: #4BAAE3;
+  --sidebar-w: 220px;
+  --header-h: 56px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  font-family: 'Golos Text', system-ui, -apple-system, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.22); }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 8px; border-radius: 4px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.badge--green { background: var(--green-dim); color: var(--green); }
+.badge--yellow { background: var(--yellow-dim); color: var(--yellow); }
+.badge--red { background: var(--red-dim); color: var(--red); }
+.badge--orange { background: var(--orange-dim); color: var(--orange); }
+.badge--muted { background: rgba(255,255,255,0.06); color: var(--text-secondary); }
+
+.dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; display: inline-block;
+}
+.dot--green { background: var(--green); }
+.dot--yellow { background: var(--yellow); }
+.dot--red { background: var(--red); }
+.dot--orange { background: var(--orange); }
+.dot--muted { background: rgba(255,255,255,0.3); }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
