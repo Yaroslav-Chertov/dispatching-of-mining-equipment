@@ -1,7 +1,7 @@
 {
-  "name": "forkit-dispatcher-v2",
-  "version": "2.0.0",
-  "description": "ФОРК ИТ — Оптимизатор простоев. Прототип редизайна v2 (тёмная + светлая тема). Студия Луч.",
+  "name": "forkit-dispatcher-v3",
+  "version": "3.0.0",
+  "description": "ФОРК ИТ — Оптимизатор простоев. Прототип v3. Шрифты: Druk Wide + Golos Text. Студия Луч.",
   "private": true,
   "scripts": {
     "dev": "next dev",

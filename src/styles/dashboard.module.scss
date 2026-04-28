@@ -20,39 +20,39 @@
 }
 
 .kpi {
-  flex: 1;
-  padding: 12px 18px;
+  flex: 1; padding: 11px 18px;
   border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+  display: flex; flex-direction: column; gap: 3px;
   transition: background 0.22s;
 }
 .kpi:last-child { border-right: none; }
 
+/* Лейбл KPI — Druk Wide (маленький капс-лейбл) */
 .kpi__label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.055em;
-  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 0.07em; text-transform: uppercase;
   color: var(--text-muted);
 }
+
+/* Значение KPI — Druk Wide (крупные числа) */
 .kpi__value {
-  font-size: 22px;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 24px; font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.05;
+  line-height: 1.0;
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 .kpi__value--orange { color: var(--orange); }
 .kpi__value--green  { color: var(--green);  }
 .kpi__value--yellow { color: var(--yellow); }
 .kpi__value--red    { color: var(--red);    }
 
+/* Подпись под KPI — Golos Text */
 .kpi__sub {
-  font-size: 11px;
-  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 11px; color: var(--text-muted);
   display: flex; align-items: center; gap: 3px;
 }
 .trend--up   { color: var(--green);  font-weight: 600; }
@@ -60,136 +60,100 @@
 
 /* ── LEFT CONTENT ────────────────────────────────── */
 .content-left {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  overflow: hidden; border-right: 1px solid var(--border);
   min-height: 0;
 }
 
 /* ── MAP ─────────────────────────────────────────── */
 .map-area {
-  flex: 1;
-  position: relative;
+  flex: 1; position: relative;
   background: var(--map-bg);
-  overflow: hidden;
-  min-height: 0;
+  overflow: hidden; min-height: 0;
   transition: background 0.22s ease;
 }
 
 .map-svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
 }
 
-/* Vehicles */
 .vehicle {
   position: absolute;
   transform: translate(-50%, -50%);
-  cursor: pointer;
-  transition: transform 0.18s;
-  z-index: 2;
+  cursor: pointer; transition: transform 0.18s; z-index: 2;
 }
 .vehicle:hover { transform: translate(-50%, -50%) scale(1.18); z-index: 5; }
 
 .vehicle__dot {
-  width: 30px; height: 30px;
-  border-radius: 50%;
+  width: 30px; height: 30px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 13px;
-  position: relative;
+  font-size: 13px; position: relative;
   border: 1.5px solid rgba(0,0,0,0.3);
 }
 [data-theme="light"] .vehicle__dot {
   border-color: rgba(255,255,255,0.5);
   box-shadow: 0 1px 4px rgba(0,0,0,0.18);
 }
-
 .vehicle__dot--truck    { background: #2563EB; color: #fff; }
 .status-idle  { background: var(--yellow) !important; color: #111 !important; }
-.status-alert { background: var(--red)    !important; box-shadow: 0 0 12px rgba(224,68,68,0.4) !important; }
-
+.status-alert { background: var(--red) !important; box-shadow: 0 0 12px rgba(224,68,68,0.4) !important; }
 .vehicle__dot--excavator {
-  background: var(--orange);
-  border-radius: 7px;
-  color: #fff;
+  background: var(--orange); border-radius: 7px; color: #fff;
   box-shadow: 0 0 10px var(--orange-glow);
 }
 
+/* Лейбл маркера — Golos Text */
 .vehicle__label {
-  position: absolute;
-  bottom: calc(100% + 3px);
-  left: 50%;
+  position: absolute; bottom: calc(100% + 3px); left: 50%;
   transform: translateX(-50%);
   background: var(--map-ctrl-bg);
-  border: 1px solid var(--border);
-  border-radius: 3px;
+  border: 1px solid var(--border); border-radius: 3px;
   padding: 1px 5px;
-  font-size: 9px;
-  font-weight: 600;
-  white-space: nowrap;
-  color: var(--text-primary);
-  pointer-events: none;
-  backdrop-filter: blur(4px);
+  font-family: var(--font-body);
+  font-size: 9px; font-weight: 600;
+  white-space: nowrap; color: var(--text-primary);
+  pointer-events: none; backdrop-filter: blur(4px);
 }
 
 .vehicle__pulse {
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
+  position: absolute; inset: -4px; border-radius: 50%;
   border: 1.5px solid var(--yellow);
-  animation: ripple 2s infinite;
-  pointer-events: none;
+  animation: ripple 2s infinite; pointer-events: none;
 }
 
-/* Map controls */
 .map-controls {
-  position: absolute;
-  bottom: 14px;
-  right: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+  position: absolute; bottom: 14px; right: 14px;
+  display: flex; flex-direction: column; gap: 3px;
 }
 .ctrl-btn {
   width: 26px; height: 26px;
   background: var(--map-ctrl-bg);
-  border: 1px solid var(--border);
-  border-radius: 4px;
+  border: 1px solid var(--border); border-radius: 4px;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
   color: var(--map-ctrl-color, var(--text-secondary));
-  font-size: 13px;
-  font-weight: 700;
-  backdrop-filter: blur(4px);
-  transition: background 0.13s;
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 700;
+  backdrop-filter: blur(4px); transition: background 0.13s;
 }
 .ctrl-btn:hover { background: var(--bg-card); color: var(--text-primary); }
 
-/* Map legend */
+/* Легенда карты — Golos Text */
 .map-legend {
-  position: absolute;
-  bottom: 14px;
-  left: 14px;
+  position: absolute; bottom: 14px; left: 14px;
   background: var(--map-ctrl-bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border: 1px solid var(--border); border-radius: 6px;
   padding: 7px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: flex; flex-direction: column; gap: 4px;
   backdrop-filter: blur(4px);
 }
 .legend-item {
   display: flex; align-items: center; gap: 6px;
-  font-size: 10px;
-  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 10px; color: var(--text-secondary);
 }
-.legend-dot {
-  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
-}
+.legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 .legend-dot--truck     { background: #2563EB; }
 .legend-dot--idle      { background: var(--yellow); }
 .legend-dot--excavator { background: var(--orange); border-radius: 2px; }
@@ -197,50 +161,41 @@
 
 /* ── FLEET TABLE ─────────────────────────────────── */
 .fleet-table-wrap {
-  height: 206px;
-  flex-shrink: 0;
+  height: 206px; flex-shrink: 0;
   border-top: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  background: var(--bg-panel);
+  display: flex; flex-direction: column;
+  overflow: hidden; background: var(--bg-panel);
   transition: background 0.22s ease, border-color 0.22s ease;
 }
 
 .section-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 14px;
-  height: 34px;
-  flex-shrink: 0;
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 14px; height: 34px; flex-shrink: 0;
   border-bottom: 1px solid var(--border);
 }
+
+/* Заголовок секции — Druk Wide */
 .title {
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-size: 9.5px; font-weight: 500;
+  letter-spacing: 0.07em; text-transform: uppercase;
   color: var(--text-secondary);
 }
+
+/* Счётчик — Golos Text */
 .count-badge {
-  font-size: 10px;
-  font-weight: 700;
-  background: var(--badge-muted-bg);
-  color: var(--text-muted);
-  padding: 1px 6px;
-  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 10px; font-weight: 700;
+  background: var(--badge-muted-bg); color: var(--text-muted);
+  padding: 1px 6px; border-radius: 8px;
 }
 .ml-auto { margin-left: auto; }
+
 .filter-btn {
-  font-size: 11px;
-  color: var(--text-muted);
-  cursor: pointer;
-  padding: 2px 8px;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 11px; color: var(--text-muted);
+  cursor: pointer; padding: 2px 8px; border-radius: 4px;
+  border: 1px solid var(--border); background: transparent;
   transition: all 0.13s;
 }
 .filter-btn:hover { background: var(--bg-card); color: var(--text-secondary); }
@@ -248,49 +203,52 @@
 .fleet-table { flex: 1; overflow-y: auto; }
 .fleet-table table { width: 100%; border-collapse: collapse; }
 
+/* Заголовки колонок — Druk Wide */
 .fleet-table th {
   position: sticky; top: 0;
   background: var(--bg-panel);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  padding: 5px 12px;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--text-muted); padding: 5px 12px;
+  text-align: left; border-bottom: 1px solid var(--border);
   white-space: nowrap;
 }
+
+/* Данные таблицы — Golos Text */
 .fleet-table td {
   padding: 6px 12px;
-  font-size: 12px;
-  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 12px; color: var(--text-secondary);
   border-bottom: 1px solid var(--border);
-  vertical-align: middle;
-  white-space: nowrap;
+  vertical-align: middle; white-space: nowrap;
 }
 .fleet-table tr:hover td { background: var(--bg-card); }
-.row--idle td  { background: rgba(232,184,75,0.035);  }
-.row--alert td { background: rgba(224,68,68,0.03);  }
+.row--idle td  { background: rgba(232,184,75,0.035); }
+.row--alert td { background: rgba(224,68,68,0.03); }
 
+/* ID — Golos Text Tabular */
 .cell-id {
-  font-weight: 700;
-  font-size: 11px;
+  font-family: var(--font-body);
+  font-weight: 700; font-size: 11px;
   color: var(--text-primary);
   font-variant-numeric: tabular-nums;
 }
-.cell-name { color: var(--text-primary); font-weight: 500; }
+.cell-name {
+  font-family: var(--font-body);
+  color: var(--text-primary); font-weight: 500;
+}
 
 .progress-mini {
   width: 44px; height: 3px;
-  background: var(--border);
-  border-radius: 2px; overflow: hidden;
+  background: var(--border); border-radius: 2px; overflow: hidden;
 }
 .fill           { height: 100%; border-radius: 2px; background: var(--green); }
 .fill--yellow   { background: var(--yellow); }
 .fill--red      { background: var(--red); }
 
 .action-btn {
+  font-family: var(--font-body);
   font-size: 10px; font-weight: 600;
   padding: 3px 8px; border-radius: 4px;
   cursor: pointer; border: none;
@@ -301,125 +259,115 @@
 
 /* ── RIGHT PANEL ─────────────────────────────────── */
 .panel-right {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  background: var(--bg-panel);
+  display: flex; flex-direction: column;
+  overflow: hidden; background: var(--bg-panel);
   transition: background 0.22s ease;
 }
 
 /* ── RECOMMENDATIONS ─────────────────────────────── */
-.recommendations {
-  flex-shrink: 0;
-  border-bottom: 1px solid var(--border);
-}
+.recommendations { flex-shrink: 0; border-bottom: 1px solid var(--border); }
 
 .badge-count {
+  font-family: var(--font-body);
   font-size: 10px; font-weight: 700;
-  padding: 1px 6px; border-radius: 8px;
-  color: #fff;
+  padding: 1px 6px; border-radius: 8px; color: #fff;
 }
 .chevron { font-size: 10px; color: var(--text-muted); }
 
-.rec-list {
-  padding: 8px 10px;
-  display: flex; flex-direction: column; gap: 7px;
-}
+.rec-list { padding: 8px 10px; display: flex; flex-direction: column; gap: 7px; }
 
 .rec-card {
   background: var(--bg-card);
-  border-radius: 7px;
-  border: 1px solid var(--border);
+  border-radius: 7px; border: 1px solid var(--border);
   padding: 11px 11px 11px 14px;
-  cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
-  position: relative;
-  overflow: hidden;
+  cursor: pointer; transition: border-color 0.15s, background 0.15s;
+  position: relative; overflow: hidden;
 }
 .rec-card::before {
   content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--orange);
-  border-radius: 2px 0 0 2px;
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--orange); border-radius: 2px 0 0 2px;
 }
-.rec-card:hover {
-  border-color: var(--orange-border);
-  background: var(--bg-card-hover);
-}
+.rec-card:hover { border-color: var(--orange-border); background: var(--bg-card-hover); }
 .rec-card--high::before { background: var(--red); }
 .rec-card--high { border-color: rgba(224,68,68,0.1); }
 
 .rec-card__header {
-  display: flex; align-items: center; gap: 7px;
-  margin-bottom: 6px;
+  display: flex; align-items: center; gap: 7px; margin-bottom: 6px;
 }
-.rec-priority {
-  width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0;
-}
+.rec-priority { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
 .rec-priority--high   { background: var(--red);    }
-.rec-priority--normal { background: var(--orange);  }
+.rec-priority--normal { background: var(--orange); }
 
-.rec-card__id   { font-size: 11px; font-weight: 700; color: var(--text-primary); }
-.rec-card__time { font-size: 10px; color: var(--text-muted); margin-left: auto; }
-
-.rec-card__desc {
-  font-size: 11.5px;
-  color: var(--text-secondary);
-  line-height: 1.45;
-  margin-bottom: 9px;
+/* ID рекомендации — Golos Text */
+.rec-card__id {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 700; color: var(--text-primary);
+}
+.rec-card__time {
+  font-family: var(--font-body);
+  font-size: 10px; color: var(--text-muted); margin-left: auto;
 }
 
+/* Описание — Golos Text */
+.rec-card__desc {
+  font-family: var(--font-body);
+  font-size: 11.5px; color: var(--text-secondary);
+  line-height: 1.45; margin-bottom: 9px;
+}
+
+/* Маршрут — Golos Text */
 .rec-card__route {
   display: flex; align-items: center; gap: 5px;
+  font-family: var(--font-body);
   font-size: 11px; font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 9px;
+  color: var(--text-primary); margin-bottom: 9px;
 }
 .arrow { color: var(--orange); font-size: 9px; flex-shrink: 0; }
 .from, .to {
-  padding: 2px 6px;
-  background: var(--badge-muted-bg);
-  border-radius: 4px;
-  max-width: 106px;
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  padding: 2px 6px; background: var(--badge-muted-bg); border-radius: 4px;
+  max-width: 106px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
 .rec-card__eff {
-  display: flex; align-items: center; gap: 7px;
-  margin-bottom: 9px;
+  display: flex; align-items: center; gap: 7px; margin-bottom: 9px;
 }
-.eff-label { font-size: 10px; color: var(--text-muted); flex-shrink: 0; }
+.eff-label {
+  font-family: var(--font-body);
+  font-size: 10px; color: var(--text-muted); flex-shrink: 0;
+}
 .eff-bar {
   flex: 1; height: 3px;
-  background: var(--border);
-  border-radius: 2px; overflow: hidden;
+  background: var(--border); border-radius: 2px; overflow: hidden;
 }
-.eff-value { font-size: 11px; font-weight: 700; color: var(--green); min-width: 27px; text-align: right; }
+.eff-value {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 700; color: var(--green);
+  min-width: 27px; text-align: right;
+}
 
 .rec-card__actions { display: flex; gap: 5px; }
 .btn {
-  flex: 1; padding: 6px 0;
-  border-radius: 5px;
+  flex: 1; padding: 6px 0; border-radius: 5px;
+  font-family: var(--font-body);
   font-size: 11px; font-weight: 600;
-  cursor: pointer; border: none;
-  transition: all 0.13s; text-align: center;
+  cursor: pointer; border: none; transition: all 0.13s; text-align: center;
 }
 .btn--accept { background: var(--orange); color: #fff; }
 .btn--accept:hover { filter: brightness(1.1); }
 .btn--decline {
-  background: var(--badge-muted-bg);
-  color: var(--text-secondary);
+  background: var(--badge-muted-bg); color: var(--text-secondary);
   border: 1px solid var(--border);
 }
 .btn--decline:hover { background: var(--bg-card-hover); color: var(--text-primary); }
 
 /* ── INCIDENTS ───────────────────────────────────── */
-.incidents {
-  flex: 1; display: flex; flex-direction: column; overflow: hidden;
+.incidents { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+.see-all {
+  font-family: var(--font-body);
+  font-size: 10px; color: var(--orange); cursor: pointer; font-weight: 600;
 }
-.see-all { font-size: 10px; color: var(--orange); cursor: pointer; font-weight: 600; }
 
 .incident-list {
   flex: 1; overflow-y: auto;
@@ -428,34 +376,37 @@
 }
 .incident-item {
   display: flex; align-items: flex-start; gap: 9px;
-  padding: 8px 8px;
-  border-radius: 5px;
-  cursor: pointer;
+  padding: 8px 8px; border-radius: 5px; cursor: pointer;
   transition: background 0.12s;
 }
 .incident-item:hover { background: var(--bg-card); }
 
 .inc-icon {
-  width: 26px; height: 26px;
-  border-radius: 5px;
+  width: 26px; height: 26px; border-radius: 5px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 12px;
-  flex-shrink: 0; margin-top: 1px;
+  font-size: 12px; flex-shrink: 0; margin-top: 1px;
 }
 .inc-icon--red    { background: var(--red-dim);    }
 .inc-icon--yellow { background: var(--yellow-dim); }
 .inc-icon--muted  { background: var(--badge-muted-bg); }
 
 .inc-body { flex: 1; min-width: 0; }
+
+/* Заголовок инцидента — Golos Text */
 .inc-title {
+  font-family: var(--font-body);
   font-size: 12px; font-weight: 600;
   color: var(--text-primary); margin-bottom: 1px;
 }
 .inc-desc {
+  font-family: var(--font-body);
   font-size: 11px; color: var(--text-muted);
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-.inc-time { font-size: 10px; color: var(--text-muted); flex-shrink: 0; }
+.inc-time {
+  font-family: var(--font-body);
+  font-size: 10px; color: var(--text-muted); flex-shrink: 0;
+}
 
 /* ── OPTIMIZER BAR ───────────────────────────────── */
 .optimizer-bar {
@@ -463,8 +414,7 @@
   background: rgba(246,83,24,0.07);
   border-top: 1px solid rgba(246,83,24,0.18);
   display: flex; align-items: center;
-  padding: 0 14px; gap: 8px;
-  flex-shrink: 0;
+  padding: 0 14px; gap: 8px; flex-shrink: 0;
   transition: background 0.22s;
 }
 [data-theme="light"] .optimizer-bar {
@@ -472,21 +422,23 @@
   border-top-color: rgba(246,83,24,0.15);
 }
 
+/* "Оптимизатор" — Druk Wide */
 .opt-label {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 0.055em; text-transform: uppercase;
+  font-family: var(--font-display);
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--orange);
 }
 .opt-status {
+  font-family: var(--font-body);
   display: flex; align-items: center; gap: 5px;
   font-size: 11px; color: var(--text-secondary);
 }
 .opt-btn {
+  font-family: var(--font-body);
   font-size: 11px; font-weight: 600;
-  padding: 3px 10px; border-radius: 5px;
-  cursor: pointer;
+  padding: 3px 10px; border-radius: 5px; cursor: pointer;
   border: 1px solid var(--orange-border);
-  background: transparent; color: var(--orange);
-  transition: all 0.13s;
+  background: transparent; color: var(--orange); transition: all 0.13s;
 }
 .opt-btn:hover { background: var(--orange); color: #fff; }

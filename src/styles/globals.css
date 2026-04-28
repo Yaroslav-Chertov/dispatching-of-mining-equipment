@@ -1,4 +1,39 @@
-/* ─── BRAND CONSTANTS (never change) ─────────────────────── */
+/* ─────────────────────────────────────────────────────────────
+   ШРИФТЫ
+   Согласно гайдбуку ФОРК ИТ:
+   - Заголовки: Druk Wide Medium (self-hosted, файлы в /public/fonts/)
+   - Текст / подзаголовки / сноски: Golos Text
+   ───────────────────────────────────────────────────────────── */
+
+/* Druk Wide — self-hosted. Положите файлы в /public/fonts/ */
+@font-face {
+  font-family: 'Druk Wide';
+  src: url('/fonts/DrukWide-Medium-Web.woff2') format('woff2'),
+       url('/fonts/DrukWide-Medium-Web.woff')  format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Druk Wide';
+  src: url('/fonts/DrukWide-Bold-Web.woff2') format('woff2'),
+       url('/fonts/DrukWide-Bold-Web.woff')  format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+  --font-display: стек заголовков.
+  Приоритет: Druk Wide (если файл есть) → Oswald (Google Fonts fallback) → Arial Black
+  --font-body: стек для текста — Golos Text → system-ui
+*/
+:root {
+  --font-display: 'Druk Wide', 'Oswald', 'Arial Black', sans-serif;
+  --font-body:    'Golos Text', system-ui, -apple-system, sans-serif;
+}
+
+/* ─── BRAND CONSTANTS ─────────────────────────────────────── */
 :root {
   --orange: #F65318;
   --orange-dim: rgba(246, 83, 24, 0.12);
@@ -17,7 +52,7 @@
   --radius-lg: 10px;
 }
 
-/* DARK (default) */
+/* ─── DARK THEME (default) ───────────────────────────────── */
 :root, [data-theme="dark"] {
   --bg-root: #111111;
   --bg-panel: #191919;
@@ -42,7 +77,7 @@
   --shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
-/* LIGHT */
+/* ─── LIGHT THEME ────────────────────────────────────────── */
 [data-theme="light"] {
   --bg-root: #ECEEF2;
   --bg-panel: #FFFFFF;
@@ -67,11 +102,13 @@
   --shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 
-/* BASE */
+/* ─── BASE ───────────────────────────────────────────────── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { height: 100%; }
+
 body {
-  font-family: 'Golos Text', system-ui, -apple-system, sans-serif;
+  /* Весь основной текст — Golos Text */
+  font-family: var(--font-body);
   background: var(--bg-root);
   color: var(--text-primary);
   font-size: 13px;
@@ -79,15 +116,26 @@ body {
   overflow: hidden;
 }
 
+/* Заголовки — Druk Wide / Oswald */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;    /* Medium — как в гайдбуке */
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* ─── SCROLLBARS ─────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 3px; height: 3px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 2px; }
 
+/* ─── GLOBAL BADGES ──────────────────────────────────────── */
 .badge {
   display: inline-flex; align-items: center; gap: 4px;
   padding: 2px 7px; border-radius: 4px;
   font-size: 11px; font-weight: 600; letter-spacing: 0.01em;
   white-space: nowrap;
+  font-family: var(--font-body);
 }
 .badge--green  { background: var(--green-dim);       color: var(--green);  }
 .badge--yellow { background: var(--yellow-dim);      color: var(--yellow); }
@@ -95,6 +143,7 @@ body {
 .badge--orange { background: var(--orange-dim);      color: var(--orange); }
 .badge--muted  { background: var(--badge-muted-bg);  color: var(--badge-muted-color); }
 
+/* ─── DOTS ───────────────────────────────────────────────── */
 .dot {
   width: 5px; height: 5px; border-radius: 50%;
   flex-shrink: 0; display: inline-block;
@@ -105,6 +154,7 @@ body {
 .dot--orange { background: var(--orange); }
 .dot--muted  { background: var(--text-muted); }
 
+/* ─── ANIMATIONS ─────────────────────────────────────────── */
 @keyframes livePulse {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.35; }
