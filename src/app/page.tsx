@@ -524,7 +524,7 @@ export default function DashboardPage() {
 
             {/* Dispatcher */}
             <div className={styles["dispatcher"]}>
-              <div className={styles["avatar"]}>АТ</div>
+              <div className={styles["avatar"]}>ИС</div>
               <div className={styles["disp-name"]}>Имя сотрудника</div>
             </div>
           </div>
